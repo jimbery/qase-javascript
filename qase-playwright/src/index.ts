@@ -418,6 +418,9 @@ class PlaywrightReporter implements Reporter {
         this.queued--;
         this.logTestItem(test, testResult);
         const caseIds = this.getCaseIds(test);
+        if (testResult.stderr !== undefined) {
+            console.log(testResult.stderr)
+        }
         const caseObject: ResultCreate = {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             status: Statuses[testResult.status] || Statuses.failed,
